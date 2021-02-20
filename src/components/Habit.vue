@@ -3,9 +3,9 @@
     <div class="title">
       {{ habit.title }}
     </div>
-    <div class="progress">{{ this.progress }} / {{ habit.goal }}</div>
+    <div class="progress">{{ habit.progress }} / {{ habit.goal }}</div>
   </div>
-  <div v-else class="habit new">    
+  <div v-else class="habit new">
       <div>+</div>
   </div>
 </template>
@@ -13,24 +13,24 @@
 export default {
   data: () => {
     return {
-      progress: 0,
       cssClass: "habit",
     };
   },
   props: {
     habit: {
       type: Object,
-      required: true,
+      required: false,
     },
   },
   methods: {
     addProgress() {
-      if (this.progress < this.habit.goal) {
-        this.progress++;
+      if (this.habit.progress < this.habit.goal) {
+        this.habit.progress++;
       }
-      if (this.progress == this.habit.goal) {
+      if (this.habit.progress == this.habit.goal) {
         this.cssClass = "habit completed";
       }
+      this.$emit('clicked');
     },
   },
   created: () => {},
