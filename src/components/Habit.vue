@@ -1,9 +1,12 @@
 <template>
-  <div :class="cssClass" @click="addProgress">
+  <div v-if="this.habit" :class="cssClass" @click="addProgress">
     <div class="title">
       {{ habit.title }}
     </div>
     <div class="progress">{{ this.progress }} / {{ habit.goal }}</div>
+  </div>
+  <div v-else class="habit new">    
+      <div>+</div>
   </div>
 </template>
 <script>
@@ -41,7 +44,6 @@ export default {
   grid-template-rows: 1fr 2fr;
   border-radius: 30px;
   background-color: palegoldenrod;
-  aspect-ratio: 1/1;
   border: 0.5px solid black;
   box-shadow: 4px 4px 2px 1px #8a8a8a;
   padding: 10px;
@@ -61,5 +63,11 @@ export default {
 }
 .completed {
   background-color: greenyellow;
+}
+.new {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    font-size: 2em;
+    font-weight: bold;
 }
 </style>

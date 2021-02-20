@@ -2,6 +2,7 @@
   <div id="app">
     <div class="wrapper">
       <habit v-for="habit in habits" :key="habit.title" :habit="habit"></habit>
+      <habit></habit>
     </div>
   </div>
 </template>
@@ -24,10 +25,19 @@ export default {
         {
           title: "Go Outside",
           goal: 2,
+        },
+        {
+          title: "Stand Up!",
+          goal: 30,
         }
       ],
     };
   },
+  mounted() {
+    if(!localStorage.getItem('backgroundColor')) {
+      localStorage.setItem('backgroundColor','peachpuff');
+    }
+  }
 };
 </script>
 
