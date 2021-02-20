@@ -2,9 +2,9 @@
   <div id="app">
     <div class="wrapper">
       <habit v-for="habit in habits" :key="habit.title" :habit="habit" @clicked="saveHabits"></habit>
-      <habit></habit>
+      <habit @clicked="addNewHabitVisible = true"></habit>
     </div>
-    <new-habit @new-habit="addHabit"/>
+    <new-habit v-if="addNewHabitVisible" @new-habit="addHabit"/>
   </div>
 </template>
 
@@ -21,12 +21,14 @@ export default {
   data: () => {
     return {
       habits: [],
+      addNewHabitVisible: false,
     };
   },
   methods: {
     addHabit(habit) {
       this.habits.push(habit);
       localStorage.setItem('habits', JSON.stringify(this.habits));
+      this.addNewHabitVisible = false;
     },
     saveHabits() {
       localStorage.setItem('habits', JSON.stringify(this.habits));

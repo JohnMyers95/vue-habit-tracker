@@ -5,7 +5,7 @@
     </div>
     <div class="progress">{{ habit.progress }} / {{ habit.goal }}</div>
   </div>
-  <div v-else class="habit new">
+  <div v-else class="habit new" @click="newHabit">
       <div>+</div>
   </div>
 </template>
@@ -32,6 +32,9 @@ export default {
       }
       this.$emit('clicked');
     },
+    newHabit() {
+      this.$emit('clicked');
+    }
   },
   created: () => {},
 };
