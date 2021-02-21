@@ -4,7 +4,7 @@
       <habit v-for="habit in habits" :key="habit.title" :habit="habit" @clicked="saveHabits"></habit>
       <habit @clicked="addNewHabitVisible = true"></habit>
     </div>
-    <new-habit v-if="addNewHabitVisible" @new-habit="addHabit"/>
+    <new-habit v-if="addNewHabitVisible" @new-habit="addHabit" @close="addNewHabitVisible = false"></new-habit>
   </div>
 </template>
 
@@ -32,6 +32,7 @@ export default {
     },
     saveHabits() {
       localStorage.setItem('habits', JSON.stringify(this.habits));
+      localStorage.setItem('lastSaveTime', Date.now());
     }
   },
   mounted() {

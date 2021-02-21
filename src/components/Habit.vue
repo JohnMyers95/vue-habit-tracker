@@ -36,7 +36,11 @@ export default {
       this.$emit('clicked');
     }
   },
-  created: () => {},
+  mounted() {
+    if(this.habit && this.habit.progress == this.habit.goal) {
+      this.cssClass = "habit completed";
+    }
+  }
 };
 </script>
 
