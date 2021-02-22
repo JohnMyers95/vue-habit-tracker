@@ -54,9 +54,8 @@ export default {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-  transition: 0.5s;
+  transition: all 0.1s linear;
 }
 .content {
   background-color: white;
